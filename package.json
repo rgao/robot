@@ -1,0 +1,26 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "robot simulator?",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgao/robot.git"
+  },
+  "author": "ryan gao, grant huang, omar carmona",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rgao/robot/issues"
+  },
+  "homepage": "https://github.com/rgao/robot#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql2": "^1.6.4",
+    "path": "^0.12.7",
+    "sequelize-cli": "^5.4.0"
+  }
+}
