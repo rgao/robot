@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 
-const db = require("./models");
+var db = require("./models");
 
 var PORT = process.env.PORT || 8080;
 
@@ -16,8 +16,9 @@ const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-const routes = require("./controller/robot_controller.js");
-app.use(routes);
+// const routes = require("./controller/app_controller.js");
+// app.use(routes);
+require("./routes")(app);
 
 db.sequelize.sync({ force: true }).then(function () {
     app.listen(PORT, function () {
