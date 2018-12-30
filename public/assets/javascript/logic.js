@@ -18,7 +18,7 @@ $(document).ready(function () {
         y: center.y,
         angle: 0, //direction bot is pointing clockwise of north.
         stepsize: 10,
-        turnangle: Math.PI/4
+        turnangle: Math.PI / 4
     };
 
     // ctx.lineWidth = 5;
@@ -32,30 +32,71 @@ $(document).ready(function () {
     // ctx.stroke();
 
     //moves digital robot forward
-    $("#up").on("mousedown", function () {
-        digibot.x += digibot.stepsize*Math.sin(digibot.angle);
-        digibot.y -= digibot.stepsize*Math.cos(digibot.angle);
-        renderDigibot();
-    });
+    $("#up").on("mousedown", forwards);
 
     //moves digital robot backwards
-    $("#down").on("mousedown", function() {
-        digibot.x -= digibot.stepsize*Math.sin(digibot.angle);
-        digibot.y += digibot.stepsize*Math.cos(digibot.angle);
-        renderDigibot();
-    });
+    $("#down").on("mousedown", backwards);
 
     //rotates digital robot counterclockwise
-    $("#left").on("mousedown", function() {
-        digibot.angle -= digibot.turnangle;
-        renderDigibot();
-    });
+    $("#left").on("mousedown", counterclockwise);
 
     //rotates digital robot clockwise
-    $("#right").on("mousedown", function() {
+    $("#right").on("mousedown", clockwise);
+
+    //arrow key handler
+    $(document).keydown(function (e) {
+        switch (e.which) {
+            case 37: // left
+                counterclockwise();
+                console.log("hit left");
+                break;
+
+            case 38: // up
+                forwards();
+                break;
+
+            case 39: // right
+                clockwise();
+                break;
+
+            case 40: // down
+                backwards();
+                break;
+
+            default: return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
+
+    //moves digital robot forward
+    function forwards() {
+        digibot.x += digibot.stepsize * Math.sin(digibot.angle);
+        digibot.x = (digibot.x + canvas.width) % canvas.width;
+        digibot.y -= digibot.stepsize * Math.cos(digibot.angle);
+        digibot.y = (digibot.y + canvas.height) % canvas.height;
+        renderDigibot();
+    }
+
+    //moves digital robot backwards
+    function backwards() {
+        digibot.x -= digibot.stepsize * Math.sin(digibot.angle);
+        digibot.x = (digibot.x + canvas.width) % canvas.width;
+        digibot.y += digibot.stepsize * Math.cos(digibot.angle);
+        digibot.y = (digibot.y + canvas.height) % canvas.height;
+        renderDigibot();
+    }
+
+    //turns digital robot counterclockwise
+    function counterclockwise() {
+        digibot.angle -= digibot.turnangle;
+        renderDigibot();
+    }
+
+    //turns digital robot clockwise
+    function clockwise() {
         digibot.angle += digibot.turnangle;
         renderDigibot();
-    });
+    }
 
     //updates digital robot's position/angle on the canvas
     function renderDigibot() {
@@ -66,23 +107,25 @@ $(document).ready(function () {
         //redrawing border
         ctx.fillStyle = "black";
         ctx.lineWidth = 10;
-        ctx.strokeRect(0,0, canvas.width, canvas.height);
+        ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
         var x = digibot.x;
         var y = digibot.y;
         var angle = digibot.angle;
 
+        console.log("x: " + x);
+        console.log("y: " + y);
+
         //drawing digital robot
         ctx.beginPath();
         ctx.moveTo(x, y);
-        ctx.lineTo(x - 15*Math.cos(angle), y - 15*Math.sin(angle));
-        ctx.lineTo(x + 35*Math.sin(angle), y - 35*Math.cos(angle));
-        ctx.lineTo(x + 15*Math.cos(angle), y + 15*Math.sin(angle));
+        ctx.lineTo(x - 15 * Math.cos(angle), y - 15 * Math.sin(angle));
+        ctx.lineTo(x + 35 * Math.sin(angle), y - 35 * Math.cos(angle));
+        ctx.lineTo(x + 15 * Math.cos(angle), y + 15 * Math.sin(angle));
         // ctx.lineTo(x - 15*Math.cos(angle), y + 15*Math.sin(angle));
-        ctx.lineTo(x,y);
+        ctx.lineTo(x, y);
         ctx.fill();
     }
 
     renderDigibot();
-    
 });
