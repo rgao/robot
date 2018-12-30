@@ -1,0 +1,43 @@
+var bcrypt = require("bcrypt-nodejs");
+
+module.exports = function(sequelize, DataTypes) {
+    var User = sequelize.define('User', {
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [4]
+        }
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true
+        }
+      },
+      passcode: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [8]
+          }
+      }
+    }, {
+      hooks: {
+        beforeCreate: function(user, options) {
+          user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+        }
+      }
+    });
+    User.prototype.validPassword = function (password) {
+      return bcrypt.compareSync(password, this.password);
+    }
+    // User.associate = function(models) {
+    //   // associations can be defined here
+    //   User.hasMany(models.Trip, {
+    //     onDelete: "cascade"
+    //   });
+    // }
+    return User;
+  };

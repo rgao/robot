@@ -16,6 +16,11 @@ const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// const isAuth = require("./config/middleware/authenticate");
+// const authCheck = require('./config/middleware/authenticationStatus');
+// app.use(isAuth);
+// app.use(authCheck);
+
 require("./routes")(app);
 
 app.use(function (req, res, next) {
