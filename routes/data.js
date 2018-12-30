@@ -1,8 +1,8 @@
 var express = require('express');
 var router  = express.Router();
 
-var data_controller = require("../controller/data_controller.js");
+var data_controller = require("../controllers/data_controller.js");
 
-router.get('/', data_controller.index);
+router.get('/', data_controller.data);
 
 module.exports = router;
