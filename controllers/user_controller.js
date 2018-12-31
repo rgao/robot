@@ -25,7 +25,7 @@ exports.register = function(request, response) {
         db.user.create({
           username: request.body.username,
           email: request.body.email,
-          passcode: request.body.passcode
+          password: request.body.password
         }).then(function() {
           response.send({redirect: '/'});
         }).catch(function(error) {
