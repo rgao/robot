@@ -42,20 +42,7 @@
 //         }
 //     });
 
-//     // Check "on-the-fly" if repeated email matches email
-//     repeatEmailInput.bind('input propertychange', function () {
-//         if (emailInput.val().trim() !== repeatEmailInput.val().trim()) {
-//             $("#email-repeat-form").removeClass("has-success");
-
-//             $("#email-repeat-form").addClass("has-error");
-//             $("#email-repeat-feedback").text("Emails Don't Match");
-//         } else {
-//             $("#email-repeat-form").removeClass("has-error");
-
-//             $("#email-repeat-form").addClass("has-success");
-//             $("#email-repeat-feedback").text("Emails Match!");
-//         }
-//     });
+// 
 //     var passwordRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/;
 //     passwordInput.bind('input propertychange', function () {
 //         if (!passwordRegEx.test($(this).val())) {
@@ -69,43 +56,6 @@
 //             $("#password-form").addClass("has-success");
 //             $("#password-feedback").text("Password set correctly!");
 //         }
-//     });
-
-//     repeatPasswordInput.bind('input propertychange', function () {
-//         if (passwordInput.val().trim() !== repeatPasswordInput.val().trim()) {
-//             $("#repeat-password-form").removeClass("has-success");
-
-//             $("#repeat-password-form").addClass("has-error");
-//             $("#repeat-password-feedback").text("Passwords Don't Match");
-//         } else {
-//             $("#repeat-password-form").removeClass("has-error");
-
-//             $("#repeat-password-form").addClass("has-success");
-//             $("#repeat-password-feedback").text("Passwords Match!");
-//         }
-//     });
-
-//     // Check if emails match each other
-//     signUpButton.on("click", function (event) {
-//         // Replace all alerts with modals
-
-//         var userData = {
-//             username: usernameInput.val().trim(),
-//             email: emailInput.val().trim(),
-//             password: passwordInput.val().trim()
-//         };
-
-//         if (!userData.username || !userData.email || !userData.password) {
-//             return alert("Please don't leave fields blank");
-//         }
-
-//         // If we have an email and password, run the signUpUser function
-//         signUpUser(userData.username, userData.email, userData.password);
-//         emailInput.val("");
-//         passwordInput.val("");
-//         usernameInput.val("");
-//         repeatPasswordInput.val("");
-//         repeatEmailInput.val("");
 //     });
 
 //     // Does a post to the signup route. If succesful, we are redirected to the members page
