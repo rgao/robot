@@ -35,11 +35,11 @@ module.exports = function(sequelize, DataTypes) {
       return bcrypt.compareSync(password, this.password);
     }
 
-    User.associate = function(models) {
-      User.hasMany(models.robot, {
-        onDelete: "cascade"
-      });
-    }
+    // User.associate = function(models) {
+    //   User.hasMany(models.robot, {
+    //     onDelete: "cascade"
+    //   });
+    // }
 
     return User;
   };
