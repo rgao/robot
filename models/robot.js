@@ -6,6 +6,9 @@ module.exports = function (sequelize, DataTypes) {
                 len: [4]
             }
         },
+        name: {
+            type: DataTypes.STRING,
+        },
         icon: {
             type: DataTypes.BOOLEAN,
             allowNull: false
@@ -24,7 +27,6 @@ module.exports = function (sequelize, DataTypes) {
         },
         background: {
             type: DataTypes.STRING,
-            allowNull: false
         }
     });
     return Robot;
