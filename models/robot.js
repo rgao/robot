@@ -1,13 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
-    var Robot = sequelize.define("Robot", {
-        username: {
-            type: DataTypes.STRING,
-            validate: {
-                len: [4]
-            }
-        },
+    const Robot = sequelize.define("Robot", {
         name: {
             type: DataTypes.STRING,
+            validate: {
+                allowNull: false,
+                len: [1]
+            }
         },
         icon: {
             type: DataTypes.BOOLEAN,
@@ -29,5 +27,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
         }
     });
+
+    Robot.associate = function (models) {
+        Robot.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    }
+
     return Robot;
 };
