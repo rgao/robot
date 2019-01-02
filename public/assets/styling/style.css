@@ -5,3 +5,7 @@ body {
 .direction-btn {
     border-radius: 100%;
 }
+
+#registration-form {
+    border-radius: 2%;
+}
