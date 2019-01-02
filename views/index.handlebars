@@ -6,12 +6,16 @@
     <canvas id="robotCanvas" width="750" height="450"></canvas>
 </div>
 <section class="text-center" id="controlPanel">
-    <h2>Controls</h2>
-
-    <button class="btn btn-dark" id="up">Up</button>
-    <button class="btn btn-dark" id="down">Down</button>
-    <button class="btn btn-dark" id="left">Left</button>
-    <button class="btn btn-dark" id="right">Right</button>
+    <h2>Rover Controls</h2>
+    <div id="buttons">
+        <button class="btn btn-dark mb-1 direction-btn" id="up">&#8593;</button>
+        <br>
+        <button class="btn btn-dark direction-btn mr-3" id="left">&#8592;</button>
+        <button class="btn btn-dark direction-btn ml-3" id="right">&#8594;</button>
+        <br>
+        <button class="btn btn-dark direction-btn" id="down">&#8595;</button>
+        
+    </div>
 </section>
 
 {{> footer }}
