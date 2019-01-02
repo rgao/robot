@@ -6,5 +6,5 @@ module.exports = function(app) {
 
     app.use("/", application);
     app.use("/data", data);
-    app.use("/register", users);
+    app.use("/users", users);
 }

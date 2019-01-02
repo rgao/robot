@@ -1,7 +1,9 @@
 var db = require("../models");
 
 exports.registration = function(request, response) {
-    response.render("users/registration");
+    response.render("users/registration", {
+      layout: 'registration-main'
+    });
 };
 
 exports.login = function(request, response) {
@@ -15,14 +17,14 @@ exports.signOut = function(request, response) {
 
 exports.register = function(request, response) {
 
-    db.user.findAll({
+    db.User.findAll({
       where: {username: request.body.username}
     }).then(function(users) {
       if (users.length > 0) {
         response.json({duplicateUser: true});
 
       } else {
-        db.user.create({
+        db.User.create({
           username: request.body.username,
           email: request.body.email,
           password: request.body.password
