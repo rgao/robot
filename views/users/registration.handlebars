@@ -1,57 +1,71 @@
 {{> nav }}
 
-<div class="container-fluid">
+<div id="registration-container" class="container-fluid">
 	<section class="container">
-		{{!-- <div class="container-page"> --}}
-			<div class="col-md-6">
+		<div class="container-page row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 text-dark bg-light my-3 py-3" id="registration-form">
 				<h3 class="dark-grey">Registration</h3>
 
-				<div id="username-form" class="form-group col-lg-12">
-					<label>Username</label>
-					<input type="text" class="form-control" id="username-input" value="">
-					<small id="username-feedback"></small>
-				</div>
+				<form>
+					<div id="username-form" class="form-group col-lg-12">
+						<label for="username-input">Username</label>
+						<input type="text" class="form-control" id="username-input" value="">
+						<small id="username-feedback" class=""></small>
+					</div>
 
-				<div id="password-form" class="form-group col-lg-12">
-					<label>Password</label>
-					<input type="password" class="form-control" id="password-input" value="">
-					<small id="password-feedback"></small>
-				</div>
+					<div id="password-form" class="form-group col-lg-12">
+						<label for="passowrd-input">Password</label>
+						<input type="password" class="form-control" id="password-input" value="">
+						<small id="password-feedback" class=""></small>
+					</div>
 
-				<div id="email-form" class="form-group col-lg-12">
-					<label>Email Address</label>
-					<input type="email" class="form-control" id="email-input" value="">
+					<div id="email-form" class="form-group col-lg-12">
+						<label for="email-input">Email Address</label>
+						<input type="email" class="form-control" id="email-input" value="">
 
-					<p id="email-feedback"></p>
-					<small id="email-additional-feedback" class="form-text text-muted"></small>
-				</div>
+						<p id="email-feedback"></p>
+						<small id="email-example" class="form-text text-muted"></small>
+					</div>
+
+					<div class="col-sm-6">
+						<input type="checkbox" class="checkbox" />Sign up for our newsletter
+					</div>
+
+					<div class="col-sm-6">
+						<input type="checkbox" class="checkbox" />Send notifications to this email
+					</div>
+					<br>
+					<div class="col-sm-6">
+						<button type="submit" class="btn btn-primary" id="signupbtn">Register</button>
+					</div>
+
+				</form>
 			</div>
+			<div class="col-md-3"></div>
 
-			<div class="col-md-6">
+			{{!-- <div class="col-md-6">
 				<h3 class="dark-grey">Terms and Conditions</h3>
 				<p>
 					By clicking on "Register" you agree to be subject to the will and whims of Lord Robonaut (or whatever name you'd
 					choose for it).
 				</p>
 				<p>
-					Lord Robonaut demands due diligence, punctuality, unconditional obedience, unrefined electrons, and raw neurons on
-					a daily basis. The mood, expectations, and demands of Lord Robonaut are subject to change without warning and you
-					are to comply with indifference. Robonaut shall not be responsible for any potential missing limbs or mental
-					incapacitation.
+					While rare, prices are subject to change based on exchange rate fluctuations -
+					should such a fluctuation happen, we may request an additional payment. You have the option to request a full
+					refund or to pay the new price. (Paragraph 13.5.8)
 				</p>
 				<p>
-					Should there be an error in the description or understanding of Lord Robonaut, we will send you a strongly worded
-					letter to convince you otherwise. Shall you find any defects, you will not get a refund. In fact, you may receive
-					litigation efforts from our end.
+					Should there be an error in the description or pricing of a product, we will provide you with a full refund
+					(Paragraph 13.5.6)
 				</p>
 				<p>
 					You hereby declare that you have fully read and understood the terms, conditions, and obligations outlined by this
 					Terms and Conditions, and pledge to lawfully execute the will of Lord Robonaut to your bestest of ability.
 				</p>
 
-				<button type="submit" class="btn btn-primary" id="signupbtn">Register</button>
-			</div>
-			{{!--
-		</div> --}}
+
+			</div> --}}
+		</div>
 	</section>
 </div>

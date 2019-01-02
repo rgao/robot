@@ -1,16 +1,15 @@
 $(document).ready(function () {
-    // Getting references to our form and input
+
     var usernameInput = $("input#username-input");
     var emailInput = $("input#email-input");
     var passwordInput = $("input#password-input");
 
-    // Username "on-the-fly" validation
     usernameInput.bind('input propertychange', function () {
-        if (usernameInput.val().trim().length < 4) {
+        if (usernameInput.val().trim().length < 6) {
             $("#username-form").removeClass("has-success");
 
             $("#username-form").addClass("has-error");
-            $("#username-feedback").text("username must be at least 4 characters long");
+            $("#username-feedback").text("Username must be at least 4 characters long");
         } else {
             $("#username-form").removeClass("has-error");
 
@@ -19,7 +18,6 @@ $(document).ready(function () {
         }
     });
 
-    // Email "on-the-fly" validation
     emailRegEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     emailInput.bind('input propertychange', function () {
         if (!emailRegEx.test($(this).val())) {
@@ -27,14 +25,14 @@ $(document).ready(function () {
 
             $("#email-form").addClass("has-error");
             $("#email-feedback").text("Invalid Email");
-            $("#email-additional-feedback").text("Ex: grant@69thirst.com");
+            $("#email-example").text("Ex: grant@69thirst.com");
 
         } else {
             $("#email-form").removeClass("has-error");
 
             $("#email-form").addClass("has-success");
             $("#email-feedback").text("Valid Email!");
-            $("#email-additional-feedback").text("");
+            $("#email-example").text("");
         }
     });
 
@@ -57,7 +55,6 @@ $(document).ready(function () {
     var signUpBtn = $("#signupbtn");
 
     signUpBtn.on("click", function(event) {
-        // Replace all alerts with modals
         event.preventDefault();
     
         var userData = {
@@ -70,15 +67,12 @@ $(document).ready(function () {
           return alert("Please fill out all fields.");
         }
     
-        // If we have an email and password, run the signUpUser function
         signUpUser(userData.username, userData.email, userData.password);
         emailInput.val("");
         passwordInput.val("");
         usernameInput.val("");
       });
 
-    // Does a post to the signup route. If succesful, we are redirected to the members page
-    // Otherwise we log any errors
     function signUpUser(username, email, password) {
         $.post("/users/register", {
             username: username,
@@ -86,7 +80,6 @@ $(document).ready(function () {
             password: password
         }).then(function (data) {
             if (data.duplicateUser) {
-                // Replace with Modal
                 alert("Username unavailable");
             } else {
                 window.location = data.redirect;
