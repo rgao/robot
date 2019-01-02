@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $('#myModal1').on('shown', function() {
+        $(document).off('focusin.modal');
+    });
+
     var usernameInput = $("input#username-input");
     var passwordInput = $("input#password-input");
 
