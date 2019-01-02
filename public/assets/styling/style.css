@@ -1,3 +1,7 @@
 body {
     background-color: lightblue;
 }
+
+.direction-btn {
+    border-radius: 100%;
+}
