@@ -6,6 +6,11 @@ body {
     border-radius: 100%;
 }
 
+#robotCanvas {
+    width: 100%;
+    height: 100%;
+}
+
 #registration-form {
     border-radius: 2%;
 }
