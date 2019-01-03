@@ -1,5 +1,5 @@
 function authenticationStatus(request, response, next) {
-    response.locals.isAuthenticated = request.isAuthenticated();
+    response.locals.authenticate = request.authenticate();
     next();
 };
 
