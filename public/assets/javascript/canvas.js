@@ -19,7 +19,6 @@ $(document).ready(function () {
     };
 
     var mouseStillDown = false;
-    var interval;
 
     //moves digital robot forward
     $("#up").on("mousedown", forwards);
@@ -49,7 +48,7 @@ $(document).ready(function () {
         switch (e.which) {
             case 37: // left
                 counterclockwise();
-                console.log("hit left");
+                //console.log("hit left");
                 break;
 
             case 38: // up
@@ -130,8 +129,12 @@ $(document).ready(function () {
     //updates digital robot's position/angle on the canvas
     function renderDigibot() {
         //clearing what's currently on canvas
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // ctx.fillStyle = "white";
+        // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        //var img = new Image();
+        //img.src = "/assets/images/moonSurface.jpg";
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         //redrawing border
         ctx.fillStyle = "black";
@@ -142,8 +145,8 @@ $(document).ready(function () {
         var y = digibot.y;
         var angle = digibot.angle;
 
-        console.log("x: " + x);
-        console.log("y: " + y);
+        //console.log("x: " + x);
+        //console.log("y: " + y);
 
         var triBase = canvas.width * 2 / 100;
         var triHeight = canvas.height * 10 / 100;
@@ -159,6 +162,16 @@ $(document).ready(function () {
         ctx.fill();
     }
 
+    var img = new Image();
+    img.src = "/assets/images/mars.jpg"
     var interval;
     interval = setInterval(move, 20);
+
+    //implements customization features to current page
+    $("#customize-btn").on("click", function(event) {
+        event.preventDefault();
+        var location = $("#location-select").val();
+        console.log(location);
+        img.src = "/assets/images/" + location + ".jpg";
+    });
 });

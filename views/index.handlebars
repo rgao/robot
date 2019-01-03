@@ -4,7 +4,19 @@
 <h1 class="text-center">Robot Control</h1>
 <div class="container">
     <div class="row">
-        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <form>
+                <div class="form-group">
+                    <label for="location-select">Location</label>
+                    <select class="form-control" id="location-select">
+                        <option value="mars">Mars</option>
+                        <option value="moon">Moon</option>
+                        <option value="venus">Venus</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-dark" id="customize-btn">Customize!</button>
+            </form>
+        </div>
         <div class="col-md-8" id="canvasContainer">
             <canvas class="" id="robotCanvas"></canvas>
         </div>
@@ -21,9 +33,9 @@
 
             </div>
         </section>
-        <div class="col-md-2"></div>
+        {{!-- <div class="col-md-2"></div> --}}
     </div>
-</div>
 
+</div>
 
 {{> footer }}
