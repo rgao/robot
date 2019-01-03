@@ -7,7 +7,6 @@ exports.registration = function (request, response) {
 };
 
 exports.login_page = function (request, response) {
-
   response.render("users/login", {
     layout: 'registration-main'
   });
