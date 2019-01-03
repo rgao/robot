@@ -13,6 +13,6 @@ router.get('/login', user_controller.login_page);
 
 router.post('/login', passport.authenticate("local"), user_controller.login);
 
-router.get('/signout', user_controller.signOut);
+router.get('/logout', user_controller.signOut);
 
 module.exports = router;
