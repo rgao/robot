@@ -1,14 +1,11 @@
 $(document).ready(function () {
-
-    $('#myModal1').on('shown', function() {
-        $(document).off('focusin.modal');
-    });
-
-    var usernameInput = $("input#username-input");
-    var passwordInput = $("input#password-input");
+    
+    var usernameInput = $("input#login-username");
+    var passwordInput = $("input#login-password");
 
     $("form.login").on("submit", function (event) {
         event.preventDefault();
+
         var userData = {
             username: usernameInput.val().trim(),
             password: passwordInput.val().trim()

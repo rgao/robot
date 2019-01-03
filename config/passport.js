@@ -12,19 +12,19 @@ passport.use(new LocalStrategy(
             where: {
                 username: username
             }
-        }).then(function (userExists) {
+        }).then(function (dbuser) {
 
-            if (!userExists) {
+            if (!dbuser) {
                 return done(null, false, {
                     message: "Username not found."
                 });
             }
-            else if (!userExists.validPassword(password)) {
+            else if (!dbuser.validPassword(password)) {
                 return done(null, false, {
                     message: "Incorrect password."
                 });
             }
-            return done(null, userExists);
+            return done(null, dbuser);
         });
     }
 ));
