@@ -10,37 +10,39 @@ $(document).ready(function () {
     var digibot = {
         x: center.x,
         y: center.y,
+        speedX: 0,
+        speedY: 0,
         angle: 0, //direction bot is pointing clockwise of north.
-        stepsize: canvas.width * 2 / 100,
-        turnangle: Math.PI / 4
+        speed: canvas.width / 150,
+        turnangle: Math.PI / 50,
+        turnSpeed: 0
     };
 
     var mouseStillDown = false;
     var interval;
 
     //moves digital robot forward
-    // $("#up").on("mousedown", function(event) {
-    //     startmoving(forwards)
-    // });
-
     $("#up").on("mousedown", forwards);
+
+    $("#up").on("touchstart", forwards);
 
     //moves digital robot backwards
     $("#down").on("mousedown", backwards);
 
+    $("#down").on("touchstart", backwards);
+
     //rotates digital robot counterclockwise
     $("#left").on("mousedown", counterclockwise);
+    
+    $("#left").on("touchstart", counterclockwise);
 
     //rotates digital robot clockwise
     $("#right").on("mousedown", clockwise);
 
-    
+    $("#right").on("touchstart", clockwise);
 
-    $(".direction-btn").on("mouseup",function (event) {
-        console.log("stop");
-        mouseStillDown = false;
-        clearInterval(interval);
-    });
+    //robot stops moving after lifting mousekey
+    $(".direction-btn").on("mouseup",stopMoving);
 
     //arrow key handler
     $(document).keydown(function (e) {
@@ -67,64 +69,62 @@ $(document).ready(function () {
         e.preventDefault(); // prevent the default action (scroll / move caret)
     });
 
-    //starts moving robot in a direction based on move function
-    function startmoving(direction) {
-        mouseStillDown = true;
-        move(direction);
-    }
+    $(document).keyup(stopMoving);
 
-    //moves robot in a direction for as long as mouse held
-    function move(direction) {
-        //user no longer holding down mouse
-        // if (!mouseStillDown) {
-        //     return;
-        // }
-        // direction();
+    //moves robot based on speed of x and y components
+    function move() {
+        digibot.x += digibot.speedX;
+        digibot.y += digibot.speedY;
 
-        // //user still holding down mouse. robot continues moving
-        // if (mouseStillDown) {
-        //     //interval = setInterval(move(direction), 50);
-        //     move(direction);
-        // }
-        if(mouseStillDown) {
-            direction();
-            //setTimeout(move(direction), 2000);
-            move(direction);
-            console.log("still holding");
-        }
-        else {
-            return;
-        }
+        //lets robot wrap back around screen
+        digibot.x = (digibot.x + canvas.width) % canvas.width;
+        digibot.y = (digibot.y + canvas.height) % canvas.height;
+
+        digibot.angle += digibot.turnSpeed;
+
+        //showing moving on canvas
+        renderDigibot();
     }
 
     //moves digital robot forward
     function forwards() {
-        digibot.x += digibot.stepsize * Math.sin(digibot.angle);
-        digibot.x = (digibot.x + canvas.width) % canvas.width;
-        digibot.y -= digibot.stepsize * Math.cos(digibot.angle);
-        digibot.y = (digibot.y + canvas.height) % canvas.height;
-        renderDigibot();
+        digibot.speedX =  digibot.speed*Math.sin(digibot.angle);
+        digibot.speedY = -digibot.speed*Math.cos(digibot.angle);
+        digitbot.turnSpeed = 0;
+        move();
     }
 
     //moves digital robot backwards
     function backwards() {
-        digibot.x -= digibot.stepsize * Math.sin(digibot.angle);
-        digibot.x = (digibot.x + canvas.width) % canvas.width;
-        digibot.y += digibot.stepsize * Math.cos(digibot.angle);
-        digibot.y = (digibot.y + canvas.height) % canvas.height;
-        renderDigibot();
+        digibot.speedX = -digibot.speed*Math.sin(digibot.angle);
+        digibot.speedY = digibot.speed*Math.cos(digibot.angle);
+        digibot.turnSpeed = 0;
+        move();
     }
 
     //turns digital robot counterclockwise
     function counterclockwise() {
-        digibot.angle -= digibot.turnangle;
-        renderDigibot();
+        digibot.speedX = 0;
+        digibot.speedY = 0;
+        digibot.turnSpeed = -digibot.turnangle;
+        move();
     }
 
     //turns digital robot clockwise
     function clockwise() {
-        digibot.angle += digibot.turnangle;
-        renderDigibot();
+        digibot.speedX = 0;
+        digibot.speedY = 0;
+        digibot.turnSpeed = digibot.turnangle;
+        move();
+    }
+
+    //stops robot from moving
+    function stopMoving() {
+        console.log("stopping");
+        digibot.speedX = 0;
+        digibot.speedY = 0;
+        digibot.turnSpeed = 0;
+        move();
     }
 
     //updates digital robot's position/angle on the canvas
@@ -159,5 +159,6 @@ $(document).ready(function () {
         ctx.fill();
     }
 
-    renderDigibot();
+    var interval;
+    interval = setInterval(move, 20);
 });
