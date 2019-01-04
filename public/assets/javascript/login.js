@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+    console.log("ready for login");
     var usernameInput = $("input#login-username");
     var passwordInput = $("input#login-password");
 
@@ -34,6 +34,7 @@ $(document).ready(function () {
             password: password
         }).then(function (data) {
             window.location.replace(data);
+           
         }).catch(function (error) {
             $("#password-feedback").text("Incorrect Username or Password");
         });
