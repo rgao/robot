@@ -1,5 +1,6 @@
 body {
-    background-color: lightblue;
+    background-color: black;
+    color: white;
 }
 
 .direction-btn {
@@ -13,4 +14,8 @@ body {
 
 #registration-form {
     border-radius: 2%;
+}
+
+.user-btn{
+    /* display: none; */
 }
