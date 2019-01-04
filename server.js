@@ -46,7 +46,7 @@ app.use(function (err, req, res, next) {
 
 app.set('port', process.env.PORT || 8080);
 
-db.sequelize.sync().then(function () {
+db.sequelize.sync({force: true}).then(function () {
     var server = app.listen(app.get('port'), function () {
         debug('Express server listening on port ' + server.address().port);
     });
