@@ -175,3 +175,10 @@ $(document).ready(function () {
         img.src = "/assets/images/" + location + ".jpg";
     });
 });
+
+module.exports = {
+    xcoor: digibot.x,
+    ycoor: digibot.y,
+    angle: digibot.angle,
+    bg: img.src
+}
