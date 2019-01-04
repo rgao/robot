@@ -11,13 +11,21 @@
 
         <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             <ul class="nav navbar-nav ml-auto">
+
+                {{#if isAuthenticated}}
                 <li class="nav-item">
-                    <a class="page-scroll nav-link" data-toggle="modal" data-target="#login-modal">Login</a>
+                    <a href="/users/logout" class="page-scroll nav-link">Logout</a>
+                </li class="nav-item">
+
+                {{else}}
+                <li class="nav-item">
+                    <a href="/users/login" class="page-scroll nav-link">Login</a>
                 </li class="nav-item">
 
                 <li class="nav-item">
                     <a href="/users/register" class="page-scroll nav-link">Register</a>
                 </li>
+                {{/if}}
 
             </ul>
         </div>
