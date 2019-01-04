@@ -174,6 +174,18 @@ $(document).ready(function () {
         console.log(location);
         img.src = "/assets/images/" + location + ".jpg";
     });
+
+    //saves the current customization settings
+    $("#save-btn").on("click", function(event) {
+        event.preventDefault();
+
+        var settings = {
+            background: img
+        };
+        console.log(settings);
+    });
+
+    // $(".user-btn").show();
 });
 
 module.exports = {
