@@ -2,20 +2,40 @@
 {{> login }}
 
 <h1 class="text-center">Robot Control</h1>
-<div class="text-center" id="canvasContainer">
-    <canvas id="robotCanvas" width="750" height="450"></canvas>
-</div>
-<section class="text-center" id="controlPanel">
-    <h2>Rover Controls</h2>
-    <div id="buttons">
-        <button class="btn btn-dark mb-1 direction-btn" id="up">&#8593;</button>
-        <br>
-        <button class="btn btn-dark direction-btn mr-3" id="left">&#8592;</button>
-        <button class="btn btn-dark direction-btn ml-3" id="right">&#8594;</button>
-        <br>
-        <button class="btn btn-dark direction-btn" id="down">&#8595;</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <form>
+                <div class="form-group">
+                    <label for="location-select">Location</label>
+                    <select class="form-control" id="location-select">
+                        <option value="mars">Mars</option>
+                        <option value="moon">Moon</option>
+                        <option value="venus">Venus</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-dark" id="customize-btn">Customize!</button>
+            </form>
+        </div>
+        <div class="col-md-8" id="canvasContainer">
+            <canvas class="" id="robotCanvas"></canvas>
+        </div>
+        <section class="text-center col-md-2" id="controlPanel">
+            <h2>Rover Controls</h2>
+            <p>Use the buttons or the arrow keys to make the rover move!</p>
+            <div id="buttons">
+                <button class="btn btn-dark mb-1 direction-btn" id="up">&#8593;</button>
+                <br>
+                <button class="btn btn-dark direction-btn mr-3" id="left">&#8592;</button>
+                <button class="btn btn-dark direction-btn ml-3" id="right">&#8594;</button>
+                <br>
+                <button class="btn btn-dark direction-btn" id="down">&#8595;</button>
 
+            </div>
+        </section>
+        {{!-- <div class="col-md-2"></div> --}}
     </div>
-</section>
+
+</div>
 
 {{> footer }}
