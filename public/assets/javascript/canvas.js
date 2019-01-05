@@ -15,7 +15,8 @@ $(document).ready(function () {
         angle: 0, //direction bot is pointing clockwise of north.
         speed: canvas.width / 150,
         turnangle: Math.PI / 50,
-        turnSpeed: 0
+        turnSpeed: 0,
+        img: null
     };
 
     var mouseStillDown = false;
@@ -134,7 +135,7 @@ $(document).ready(function () {
 
         //var img = new Image();
         //img.src = "/assets/images/moonSurface.jpg";
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
         //ctx.drawImage(img, 0, 0);
 
 
@@ -154,28 +155,50 @@ $(document).ready(function () {
         var triHeight = canvas.height * 10 / 100;
 
         //drawing digital robot
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(x - triBase * Math.cos(angle), y - triBase * Math.sin(angle));
-        ctx.lineTo(x + triHeight * Math.sin(angle), y - triHeight * Math.cos(angle));
-        ctx.lineTo(x + triBase * Math.cos(angle), y + triBase * Math.sin(angle));
+        //saving current canvas settings
+        ctx.save();
+        //moving origin of canvas to center robot's current location
+        ctx.translate(x,y);
+        //rotating canvas
+        ctx.rotate(angle);
+        ctx.drawImage(digibot.img, 25/-2, 50*3/-4, 25, 50);
+        //setting canvas back to normal
+        ctx.restore();
+
+
+        // ctx.beginPath();
+        // ctx.moveTo(x, y);
+        // ctx.lineTo(x - triBase * Math.cos(angle), y - triBase * Math.sin(angle));
+        // ctx.lineTo(x + triHeight * Math.sin(angle), y - triHeight * Math.cos(angle));
+        // ctx.lineTo(x + triBase * Math.cos(angle), y + triBase * Math.sin(angle));
         // ctx.lineTo(x - 15*Math.cos(angle), y + 15*Math.sin(angle));
-        ctx.lineTo(x, y);
-        ctx.fill();
+        //ctx.lineTo(x, y);
+        //ctx.fill();
     }
 
-    var img = new Image();
-    img.src = "/assets/images/tagusvalles.jpg"
+    var background = new Image();
+    background.src = "/assets/images/tagusvalles.jpg";
     //img.src = "https://media0.giphy.com/media/TZf4ZyXb0lXXi/giphy.gif?cid=6104955e5c2ed0d27253484d6b3128a2";
+    
+    var vehicle = new Image();
+    vehicle.src = "/assets/images/dragon.png";
+    digibot.img = vehicle;
+    
     var interval;
     interval = setInterval(move, 20);
 
     //implements customization features to current page
     $("#customize-btn").on("click", function(event) {
         event.preventDefault();
+
+        //changing background image
         var location = $("#location-select").val();
         console.log(location);
-        img.src = "/assets/images/" + location + ".jpg";
+        background.src = "/assets/images/" + location + ".jpg";
+
+        //changing vehicle
+        var robotType = $("#robot-select").val();
+        digibot.img.src = "/assets/images/" + robotType + ".png";
     });
 
     //saves the current customization settings
