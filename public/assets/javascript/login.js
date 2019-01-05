@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    console.log("ready for login");
     var usernameInput = $("input#login-username");
     var passwordInput = $("input#login-password");
 

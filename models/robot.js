@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         icon: {
-            type: DataTypes.BOOLEAN,
+            type: DataTypes.STRING,
             allowNull: false
         },
         xcoor: {
