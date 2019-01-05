@@ -9,6 +9,10 @@ body {
    color: white;
 }
 
+nav {
+    background-color: purple;
+}
+
 main, #registration-container {
     font-family: space;
 }
@@ -20,14 +24,30 @@ main, #registration-container {
 
 #controlPanel {
     background-color: grey;
+    border-radius: 2%;
+    border: 2px solid white;
 }
 
-#control-logo {
+#customize-btn {
+    background-color: cyan;
+    color: black;
+}
+
+#customize-btn:hover {
+    color: cornsilk;
+}
+
+h2 {
     font-size: 1.2em;
 }
 
 .direction-btn {
     border-radius: 100%;
+}
+
+#robot-name {
+    color: yellow;
+    font-weight: bold;
 }
 
 #robotCanvas {
@@ -42,6 +62,13 @@ form.user-form {
     border-radius: 2%;
     background-color: white;
     opacity: .87
+}
+
+#options-form {
+    color: lightgreen;
+    background-color: darkblue;
+    border-radius: 2%;
+    border: 2px solid white;
 }
 
 #terms-container {
