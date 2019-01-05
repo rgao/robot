@@ -1,18 +1,25 @@
 {{> empty-nav }}
 
-<h1 class="">Log In to Your Account</h1><br>
-<form class="login">
-	<div id="username-form" class="form-group col-lg-12">
-		<label>Username</label>
-		<input id="login-username" type="text" name="user" placeholder="Username">
-		<small id="username-feedback" class=""></small>
+<main id="login-main" class="text-center my-5 row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4 my-3 py-3" id="registration-form">
+		<h3 class="login_header">Log In to Your Account</h3><br>
+		<form class="login user-form">
+			<div id="username-form" class="form-group col">
+				<label>Username</label>
+				<input id="login-username" type="text" name="user" placeholder="Username">
+				<small id="username-feedback" class=""></small>
+			</div>
+			<div id="password-form" class="form-group col">
+				<label>Password</label>
+				<input id="login-password" type="password" name="pass" placeholder="Password">
+				<small id="password-feedback" class=""></small>
+			</div>
+			<input type="submit" class="btn btn-info mb-3" name="login" value="Login">
+		</form>
 	</div>
-	<div id="password-form" class="form-group col-lg-12">
-		<label>Password</label>
-		<input id="login-password" type="password" name="pass" placeholder="Password">
-		<small id="password-feedback" class=""></small>
-	</div>
-	<input type="submit" name="login" value="Login">
-</form>
+	<div class="col-md-4"></div>
+</main>
+</main>
 
 {{> footer }}
