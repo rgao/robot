@@ -135,11 +135,13 @@ $(document).ready(function () {
         //var img = new Image();
         //img.src = "/assets/images/moonSurface.jpg";
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        //ctx.drawImage(img, 0, 0);
+
 
         //redrawing border
-        ctx.fillStyle = "black";
-        ctx.lineWidth = 2;
-        ctx.strokeRect(0, 0, canvas.width, canvas.height);
+        // ctx.fillStyle = "black";
+        // ctx.lineWidth = 2;
+        // ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
         var x = digibot.x;
         var y = digibot.y;
@@ -163,7 +165,8 @@ $(document).ready(function () {
     }
 
     var img = new Image();
-    img.src = "/assets/images/mars.jpg"
+    img.src = "/assets/images/tagusvalles.jpg"
+    //img.src = "https://media0.giphy.com/media/TZf4ZyXb0lXXi/giphy.gif?cid=6104955e5c2ed0d27253484d6b3128a2";
     var interval;
     interval = setInterval(move, 20);
 
