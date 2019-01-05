@@ -199,6 +199,11 @@ $(document).ready(function () {
         //changing vehicle
         var robotType = $("#robot-select").val();
         digibot.img.src = "/assets/images/" + robotType + ".png";
+
+        //saving robot name
+        var name = $("#name-input").val().trim();
+        console.log(name);
+        $("#robot-name").text(name);
     });
 
     //saves the current customization settings
