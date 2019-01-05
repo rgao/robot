@@ -10,13 +10,15 @@
                         <label for="location-select">Location</label>
                         <select class="form-control" id="location-select">
                             <option value="tagusvalles">Tagus Valles</option>
-                            {{!-- <option value="mars">Mars</option> --}}
-                            {{!-- <option value="moon">Moon</option> --}}
-                            {{!-- <option value="ceres">Ceres</option> --}}
-                            {{!-- <option value="random">Venus</option> --}}
-                            <option value="lunar">Lunar</option>
-                            {{!-- <option value="cantaloupe">Triton</option> --}}
+                            <option value="lunar">Moon</option>
                             <option value="pluto">Pluto</option>
+                            <option value="grid">Grid</option>
+                        </select>
+                        <label for="robot-select">Vehicle</label>
+                        <select class="form-control" id="robot-select">
+                            <option value="dragon">Dragon Car</option>
+                            <option value="plane">Jetplane</option>
+                            <option value="triangle">Triangle</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-dark" id="customize-btn">Customize!</button>
@@ -35,7 +37,7 @@
                     <h2 id="control-logo">Controls</h2>
                     <p>Use the buttons or arrow keys to make the rover move!</p>
                     <div id="buttons">
-                        <button class="btn btn-dark mb-1 direction-btn" id="up">&#8593;</button>
+                        <button class="btn btn-dark direction-btn" id="up">&#8593;</button>
                         <br>
                         <button class="btn btn-dark direction-btn mr-3" id="left">&#8592;</button>
                         <button class="btn btn-dark direction-btn ml-3" id="right">&#8594;</button>
