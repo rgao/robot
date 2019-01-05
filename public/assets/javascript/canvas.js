@@ -32,7 +32,7 @@ $(document).ready(function () {
 
     //rotates digital robot counterclockwise
     $("#left").on("mousedown", counterclockwise);
-    
+
     $("#left").on("touchstart", counterclockwise);
 
     //rotates digital robot clockwise
@@ -41,7 +41,7 @@ $(document).ready(function () {
     $("#right").on("touchstart", clockwise);
 
     //robot stops moving after lifting mousekey
-    $(".direction-btn").on("mouseup",stopMoving);
+    $(".direction-btn").on("mouseup", stopMoving);
 
     //arrow key handler
     $(document).keydown(function (e) {
@@ -87,16 +87,16 @@ $(document).ready(function () {
 
     //moves digital robot forward
     function forwards() {
-        digibot.speedX =  digibot.speed*Math.sin(digibot.angle);
-        digibot.speedY = -digibot.speed*Math.cos(digibot.angle);
+        digibot.speedX = digibot.speed * Math.sin(digibot.angle);
+        digibot.speedY = -digibot.speed * Math.cos(digibot.angle);
         digitbot.turnSpeed = 0;
         move();
     }
 
     //moves digital robot backwards
     function backwards() {
-        digibot.speedX = -digibot.speed*Math.sin(digibot.angle);
-        digibot.speedY = digibot.speed*Math.cos(digibot.angle);
+        digibot.speedX = -digibot.speed * Math.sin(digibot.angle);
+        digibot.speedY = digibot.speed * Math.cos(digibot.angle);
         digibot.turnSpeed = 0;
         move();
     }
@@ -171,7 +171,7 @@ $(document).ready(function () {
     interval = setInterval(move, 20);
 
     //implements customization features to current page
-    $("#customize-btn").on("click", function(event) {
+    $("#customize-btn").on("click", function (event) {
         event.preventDefault();
         var location = $("#location-select").val();
         console.log(location);
@@ -179,14 +179,21 @@ $(document).ready(function () {
     });
 
     //saves the current customization settings
-    $("#save-btn").on("click", function(event) {
+    $("#save-btn").on("click", function (event) {
         event.preventDefault();
 
         var settings = {
-            background: img
+            name: "omarina",
+            icon: "triangle",
+            xcoor: digibot.x,
+            ycoor: digibot.y,
+            angle: digibot.angle,
+            background: img.src
         };
         console.log(settings);
-    });
 
-    // $(".user-btn").show();
-});
+        $.post("/data/save", settings).then(function (data) {
+            window.location.href = "/";
+        });
+    });
+})

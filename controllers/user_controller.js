@@ -13,9 +13,7 @@ exports.login_page = function (request, response) {
 };
 
 exports.login = function (request, response) {
-  //$(".user-btn").show();
   response.json("/");
- 
 };
 
 exports.signOut = function (request, response) {

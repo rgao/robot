@@ -9,7 +9,7 @@ body {
    color: white;
 }
 
-main {
+main, #registration-container {
     font-family: space;
 }
 
@@ -37,11 +37,14 @@ main {
     border: 2px solid white;
 }
 
-#registration-form {
+form.user-form {
+    border: 3px double #cccccc;
     border-radius: 2%;
+    background-color: white;
+    opacity: .87
 }
 
-.user-btn{
-    /* display: none; */
+#terms-container {
+    font-size: 8px;
+    font-family: "Arial"
 }
-
