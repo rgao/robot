@@ -5,7 +5,7 @@ $(document).ready(function () {
     var passwordInput = $("input#password-input");
 
     usernameInput.bind('input propertychange', function () {
-        if (usernameInput.val().trim().length < 6) {
+        if (usernameInput.val().trim().length < 4) {
             $("#username-form").removeClass("has-success");
 
             $("#username-form").addClass("has-error");

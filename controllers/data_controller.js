@@ -1,5 +1,7 @@
+var db = require("../models");
+
 exports.save = function (request, response) {
-    console.log(request.user);
+    console.log(request.body)
 
     request.body.UserId = req.user.id;
 
